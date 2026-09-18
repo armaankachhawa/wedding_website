@@ -14,14 +14,49 @@ const INVITATION = {
   groomParents: "(Son of Mr. Aktar Ali Khan)",
   bridePlace: "",
   groomPlace: "",
-  venueName: "Tyagi Vatika",
-  venueMapUrl: "https://maps.app.goo.gl/o9nWzix2SCkdp37aA",
+  hostedBy: "Aap aur Hum Sab — All of Us",
+  venueName: "Hasnain Trust",
+  venueAddress: "Near Kothari Hospital, Gajner Road, Bikaner",
+  venueMapUrl: "https://maps.google.com/?q=Hasnain+Trust+Near+Kothari+Hospital+Gajner+Road+Bikaner",
   eventDate: "October 02, 2026 22:00:00",
   eventDay: "2nd",
   eventMonth: "OCT",
   eventYear: "2026",
   eventTime: "Friday, 2 October 2026, 10:00 PM",
+  events: [
+    {
+      title: "Rasm-e-Henna",
+      date: "Monday, 28 September 2026",
+      time: "7:00 PM",
+      icon: "✨",
+    },
+    {
+      title: "Rasm-e-Mehndi",
+      date: "Thursday, 1 October 2026",
+      time: "8:00 PM",
+      icon: "🌿",
+    },
+    {
+      title: "Baraat",
+      date: "Friday, 2 October 2026",
+      time: "8:00 PM",
+      icon: "🎺",
+    },
+    {
+      title: "Nikah",
+      date: "Friday, 2 October 2026",
+      time: "10:00 PM",
+      icon: "💍",
+    },
+    {
+      title: "Walima / Reception",
+      date: "Monday, 5 October 2026",
+      time: "7:00 PM",
+      icon: "🕊️",
+    },
+  ],
 } as const;
+
 
 
 const MEDIA = {
@@ -315,6 +350,10 @@ export default function Home() {
               with<br /><b>{INVITATION.groom}</b><br />
               <span>{INVITATION.groomParents}{INVITATION.groomPlace ? <><br />{INVITATION.groomPlace}</> : null}</span>
             </p>
+            <div className="hosted-by-box">
+              <span className="hosted-by-tag">HOSTED WITH LOVE BY</span>
+              <p className="hosted-by-text">{INVITATION.hostedBy}</p>
+            </div>
             <img src={MEDIA.ring} alt="Wedding rings" className="ringg-image" />
           </div>
         </section>
@@ -352,8 +391,20 @@ export default function Home() {
 
         <section className="itinerary-section">
           <div className="content-wrapper scroll-animate">
-            <h2 className="venue-title">Nikah</h2>
-            <p className="timeline-time">{INVITATION.eventTime}</p>
+            <h2 className="venue-title">Wedding Itinerary</h2>
+            <p className="itinerary-subtitle">C E R E M O N I E S</p>
+            <div className="events-timeline">
+              {INVITATION.events.map((event, idx) => (
+                <div className="event-card" key={idx}>
+                  <div className="event-icon-badge">{event.icon}</div>
+                  <div className="event-details">
+                    <h3 className="event-title">{event.title}</h3>
+                    <p className="event-date">{event.date}</p>
+                    <p className="event-time">{event.time}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -365,6 +416,7 @@ export default function Home() {
               <p className="venue-text venue-hint">▲ Click on the venue to see the location in Google Map</p>
             </div>
             <p className="venue-text venue-name">{INVITATION.venueName}</p>
+            <p className="venue-text venue-address">{INVITATION.venueAddress}</p>
           </div>
         </section>
 
