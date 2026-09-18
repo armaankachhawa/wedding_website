@@ -15,9 +15,9 @@ const INVITATION = {
   bridePlace: "",
   groomPlace: "",
   hostedBy: "Aap aur Hum Sab — All of Us",
-  venueName: "Hasnain Trust",
+  venueName: "Hasnain Public Charitable Trust",
   venueAddress: "Near Kothari Hospital, Gajner Road, Bikaner",
-  venueMapUrl: "https://maps.google.com/?q=Hasnain+Trust+Near+Kothari+Hospital+Gajner+Road+Bikaner",
+  venueMapUrl: "https://maps.app.goo.gl/TKVbgpbwWzNQmTE68",
   eventDate: "October 02, 2026 22:00:00",
   eventDay: "2nd",
   eventMonth: "OCT",
@@ -28,31 +28,36 @@ const INVITATION = {
       title: "Rasm-e-Henna",
       date: "Monday, 28 September 2026",
       time: "7:00 PM",
-      icon: "✨",
+      image: "/assets/images/events/henna.png",
+      tag: "Pre-Wedding Celebration",
     },
     {
       title: "Rasm-e-Mehndi",
       date: "Thursday, 1 October 2026",
       time: "8:00 PM",
-      icon: "🌿",
+      image: "/assets/images/events/mehndi.png",
+      tag: "Sangeet & Henna Night",
     },
     {
       title: "Baraat",
       date: "Friday, 2 October 2026",
       time: "8:00 PM",
-      icon: "🎺",
+      image: "/assets/images/events/baraat.png",
+      tag: "Royal Procession",
     },
     {
       title: "Nikah",
       date: "Friday, 2 October 2026",
       time: "10:00 PM",
-      icon: "💍",
+      image: "/assets/images/events/nikah.png",
+      tag: "Auspicious Solemnization",
     },
     {
       title: "Walima / Reception",
       date: "Monday, 5 October 2026",
       time: "7:00 PM",
-      icon: "🕊️",
+      image: "/assets/images/events/walima.png",
+      tag: "Celebration Feast",
     },
   ],
 } as const;
@@ -396,11 +401,17 @@ export default function Home() {
             <div className="events-timeline">
               {INVITATION.events.map((event, idx) => (
                 <div className="event-card" key={idx}>
-                  <div className="event-icon-badge">{event.icon}</div>
+                  <div className="event-emblem-wrap">
+                    <img src={event.image} alt={event.title} className="event-emblem-img" />
+                  </div>
                   <div className="event-details">
+                    <span className="event-tag">{event.tag}</span>
                     <h3 className="event-title">{event.title}</h3>
-                    <p className="event-date">{event.date}</p>
-                    <p className="event-time">{event.time}</p>
+                    <div className="event-meta">
+                      <span className="event-date">{event.date}</span>
+                      <span className="event-divider">•</span>
+                      <span className="event-time">{event.time}</span>
+                    </div>
                   </div>
                 </div>
               ))}
